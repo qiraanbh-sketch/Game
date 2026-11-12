@@ -1,0 +1,18 @@
+name: Publish APK
+on:
+  push:
+    paths: ['dasisa.apk']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: دسيسة - آخر نسخة
+          make_latest: true
+          files: dasisa.apk
